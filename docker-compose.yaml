@@ -3,7 +3,7 @@ version: '2'
 services:
 
   nginx:
-    image: nginx:latest
+    image: devdrops/nginx:v1.3
     volumes:
       - ./app:/usr/share/nginx/html
     ports:
