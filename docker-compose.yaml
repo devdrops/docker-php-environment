@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./app:/usr/share/nginx/html
+    ports:
+      - "777:80"
+    networks:
+      - main
+
+  php:
+    image: devdrops/php-fpm:7.0
+    volumes:
+      - ./app:/usr/share/nginx/html
+    networks:
+      - main
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: secret
+    volumes:
+      - data:/var/lib/mysql
+    networks:
+      - main
+    ports:
+      - "3307:3306"
+
+networks:
+
+  main:
+    driver: 'bridge'
+
+volumes:
+
+  data:
+    driver: 'local'
