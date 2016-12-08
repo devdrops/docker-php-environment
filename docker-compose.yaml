@@ -25,7 +25,7 @@ services:
       - MYSQL_USER=root
       - MYSQL_PASSWORD=secret
     volumes:
-      - data:/var/lib/mysql
+      - dbdata:/var/lib/mysql
     ports:
       - "3307:3306"
 
@@ -36,12 +36,7 @@ services:
     links:
       - mysql
 
-networks:
-
-  main:
-    driver: 'bridge'
-
 volumes:
 
-  data:
+  dbdata:
     driver: 'local'
