@@ -21,8 +21,8 @@ services:
     image: mysql:5.7
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=symfony
-      - MYSQL_USER=symfony
+      - MYSQL_DATABASE=newdb
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=secret
     volumes:
       - data:/var/lib/mysql
@@ -34,8 +34,6 @@ services:
     volumes:
       - ./app:/usr/share/nginx/html
     links:
-      - mysql
-    depends_on:
       - mysql
 
 networks:
